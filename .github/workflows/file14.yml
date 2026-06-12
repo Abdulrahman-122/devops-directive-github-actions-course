@@ -1,12 +1,15 @@
-name: File_include_execlude
+name: Path Filter Lab
+
 on:
   push:
     paths:
       - "docs/**"
-      - "!docs/*.py"
+      - "!docs/**/*.py"
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Workflow triggered"
-      - run: echo "Changed files matched the path filter"
+      - run: echo "Workflow triggered!"
+      - run: echo "Changed file matched the path filter."
