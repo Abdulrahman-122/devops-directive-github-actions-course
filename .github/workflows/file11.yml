@@ -1,9 +1,1 @@
-name:Schedule_lab
-on:
-  schedule:
-    - cron: "15 * * * *"
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "This workflow will run every day at midnight"
+
