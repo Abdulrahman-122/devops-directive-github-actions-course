@@ -1,7 +1,7 @@
 name:Schedule_lab
 on:
   schedule:
-    - cron: "12 * * * *"
+    - cron: "15 * * * *"
 jobs:
   test:
     runs-on: ubuntu-latest
