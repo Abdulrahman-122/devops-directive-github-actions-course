@@ -1,0 +1,14 @@
+name: Mult_trigger_lab
+on:
+  push:
+  pull_request:
+  workflow_dispatch: 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This workflow can be triggered by push,pull,or manually"
+      - run: echo "welcome Abdulrahman"
+
+      
