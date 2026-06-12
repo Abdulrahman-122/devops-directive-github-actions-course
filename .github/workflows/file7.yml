@@ -1,0 +1,12 @@
+name: Path_filter_lab
+on:
+  push:
+    paths:
+      - "docs/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Decumentation changes"
+
+      
