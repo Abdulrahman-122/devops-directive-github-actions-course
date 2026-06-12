@@ -1,0 +1,12 @@
+name: Schedule_trigger
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/4 * * * *"                     
+jobs: 
+  cron-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: date
+      - run: echo "Try triggered me"
+      - run: echo "$GITHUB_EVENT_NAME"
