@@ -1,0 +1,12 @@
+name: Execlude_file_from_workflow
+on:
+  push:
+    paths:
+      - "docs/**"
+      - "!docs/*.txt"
+jobs:
+  test: 
+    runs-on: ubuntu-latest
+  steps:
+    run: echo "Allow documentation files"
+
