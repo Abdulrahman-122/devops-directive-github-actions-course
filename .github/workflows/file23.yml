@@ -1,0 +1,26 @@
+name: check_environment
+on:
+  workflow_dispatch: 
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      DATABASE_URL: ${{vars.DATABASE_URL}}
+    
+    steps:
+      - name: step1
+        run: |
+         echo "These are the URLs of Database:"
+         echo $DATABASE_URL
+  Production:
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      DATABASE_URL: ${{vars.DATABASE_URL}}
+    steps:
+      - name: step2
+        run: |
+          echo "This is the URLs of Database"
+          echo $DATABASE_URL
+      
