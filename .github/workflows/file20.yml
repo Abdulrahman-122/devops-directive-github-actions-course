@@ -1,0 +1,13 @@
+name: check_Variable_that_you_generate
+on:
+  workflow_dispatch:
+jobs:
+  check_variable:
+   runs-on: ubuntu-latest
+   env:
+    Project: ${{ vars.Project_name }}
+   steps:
+      - name: check
+        run: |
+          echo "Project is:"
+          echo "$Project"
