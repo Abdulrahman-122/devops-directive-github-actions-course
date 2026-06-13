@@ -1,0 +1,30 @@
+name: Create_artifact
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create_file
+        run: |
+          echo "Hello from yml ">>student.txt
+          echo $date >> student.txt
+      - name: upload_filee
+        uses: actions/upload-artifact@v4
+        with:
+          name: Stu_file
+          path: student.txt
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download_file
+        uses: actions/download-artifact@v5
+        with:
+          name: Stu_file
+      - name: more_info
+        run: |
+          uname -a
+          ls -R
+          echo "Operation done"
+
+  
