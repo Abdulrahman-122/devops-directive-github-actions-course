@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Frontend-step
         run: |
-         echo"Company:$Company"
+         echo "Company:$Company"
          echo "Project:$Project"
          echo "Version:$VERSION"
 
