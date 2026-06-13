@@ -1,0 +1,13 @@
+name: check_Secret_that_you_generate
+on:
+  workflow_dispatch:
+jobs:
+  check_variable:
+   runs-on: ubuntu-latest
+   env:
+    Project: ${{ secrets.Api_key }}
+   steps:
+      - name: check
+        run: |
+          echo "Project is:"
+          echo "$Project"
