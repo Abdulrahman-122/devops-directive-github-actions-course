@@ -10,7 +10,7 @@ jobs:
         run: |
           mkdir dist
           echo "Flask app" >> dist/app.txt
-          echo date >> dist/app.txt
+          echo $date >> dist/app.txt
       - name: Upload_package
         uses: actions/upload-artifact@v4
         with:
@@ -27,7 +27,7 @@ jobs:
           name: Flask_package
       - name: Verify_package
         run: |
-          cat dist/app.txt
+          cat app.txt
           ls -R
     
       
