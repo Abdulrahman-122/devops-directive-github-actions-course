@@ -1,0 +1,26 @@
+name: Check_Github_version
+on:
+  workflow_dispatch: 
+env:
+  Project: BlogPost
+jobs:
+  Full_app:
+    runs-on: ubuntu-latest
+    env:
+      Stuff: Allworkers
+    steps:
+      - name: Step1
+        run: |
+          echo "Project:$Project"
+          echo "Stuff:$Stuff"
+          echo "$GITHUB_ENV"
+          Version=1.0.0   
+                #note no spaces when define a variable at  step around the  = 
+          echo "version=$Version" >> $GITHUB_ENV  #this will make future steps to see that version
+      - name: Step2
+        run: |
+          echo "version is $Version like step1"
+      - name: Step3
+        run: | 
+          echo "version still available as you see: $Version"
+
