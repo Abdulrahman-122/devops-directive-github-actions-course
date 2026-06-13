@@ -22,7 +22,7 @@ jobs:
   Consumer:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{steps.Read.outputs.version}}
+      version: ${{ steps.Read.outputs.version }}
     steps:
      - name: Read output
        id : Read

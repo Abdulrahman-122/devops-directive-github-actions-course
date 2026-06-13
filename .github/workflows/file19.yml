@@ -1,0 +1,34 @@
+name: Check_Output_of_github
+on:
+  workflow_dispatch:
+  push:
+   branches:
+    - main
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.gen.outputs.version }}
+    steps:
+      - name: apis
+        id: gen
+        run: |
+         Version=7.1.0
+         echo "version=$Version" >> $GITHUB_ENV
+         echo "version=$Version" >> $GITHUB_OUTPUT
+      - name: check_apis
+        run: |
+          echo "${{ steps.gen.outputs.version }}"
+      # note ; to see the outputs you must define two steps one for  generation + other for varification as this is how github works but not the same at a time
+
+  Frontend:
+    runs-on: ubuntu-latest
+    needs:
+     - backend
+    steps:
+      - name: check_versions_of_last_job
+        run: |
+          echo "let's check version using environment variable(will not give you any value)"
+          echo $Version
+          echo "Let's check version of last job using outputs.version"
+          echo " ${{ needs.backend.outputs.version }} "
