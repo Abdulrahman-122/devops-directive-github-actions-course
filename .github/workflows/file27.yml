@@ -1,0 +1,26 @@
+name: compare_runners
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: runner1
+        run: |
+          echo ${{ runner.os }}
+          echo "Hello from linux"
+          uname -a
+          cat /etc/os-release
+  windows:
+    runs-on: windows-latest
+    steps:
+      -  shell: pwsh
+         name: runner2
+         run: |
+          echo "${{ runner.os }}"
+          ehco "Hello from windows"
+          Get-ComputerInfo
+
+
