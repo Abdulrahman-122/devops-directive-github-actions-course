@@ -1,0 +1,20 @@
+name: check_variable_secret_keys
+on:
+  workflow_dispatch: 
+
+jobs:
+  check_keys:
+   runs-on: ubuntu-latest
+   env:
+     Project : ${{ vars.Project_name }}
+     Api_key: ${{secrets.Api_key}}
+   steps:
+      - name: check_variable
+        run: |
+          echo "Check variable key:"
+          echo "$Project"
+      - name: check_Secrets
+        run: |
+          echo "Check secret key:"
+          echo "$Api_key"
+
