@@ -1,0 +1,31 @@
+name: check_cache
+on:
+  workflow_dispatch:
+
+jobs:
+  Cache_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore_cache
+        id : cache_demo
+        uses: actions/cache@v4
+        with:
+          path: demo-cache
+          key: my-cache-v1
+      - name: Generate_data
+        if: steps.cache_demo.outputs.cache-hit != 'true'
+        run: |
+          echo "Run miss!"
+          mkdir -p demo-cache
+          date > demo-cache/date.txt
+      - name: save_cache
+        if: steps.cache_demo.outputs.cache-hit !='true'
+        uses: actions/cache@v4
+        with:
+          path: demo-cache
+          key: my-cache-v1
+      - name: Varify
+        run: |
+          echo "Cache hit > ${{ steps.cache_demo.outputs.cache-hit }}"
+          cat demo-cache/date.txt
+          
