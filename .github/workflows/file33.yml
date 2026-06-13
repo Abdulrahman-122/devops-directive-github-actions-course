@@ -16,6 +16,8 @@ jobs:
           path: student.txt
   deploy:
     runs-on: ubuntu-latest
+    needs:
+     - build
     steps:
       - name: Download_file
         uses: actions/download-artifact@v5
