@@ -1,0 +1,19 @@
+name: Discover_your_machine
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Linux_machine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: runner_machine
+        run: | 
+          echo "${{ runner.os  }}"
+          echo "${{ runner.arch }}"
+          echo "${{ runner.name }}"
+          uname -a
+          pwd
+          whoami 
+          df -h
+          

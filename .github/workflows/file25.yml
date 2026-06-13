@@ -18,8 +18,8 @@ jobs:
         id: gen
         run: |
           echo "Actor:${{ github.actor }}"
-          echo "Actor:${ Project } "
-          echo "Actor:${ Api_key }"
+          echo "Actor:$Project  "
+          echo "Actor:$Api_key "
           echo "version=$Version">>$GITHUB_OUTPUT
   Frontend:
     runs-on: ubuntu-latest
