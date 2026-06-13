@@ -1,0 +1,30 @@
+name: Upload_download_using_artifact
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  Producer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Creat_file
+        run: |
+          echo "Hello Abdulrahman ">> info.txt
+          date>>info.txt
+      - name: Upload_artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my_file
+          path: info.txt
+  Consumer:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download_file
+      uses: actions/download-artifact@v4
+      with:
+        name: my_file
+    - name: Read_file
+      run: | 
+        cat my_file
+        
+
