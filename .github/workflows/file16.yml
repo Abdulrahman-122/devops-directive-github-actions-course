@@ -1,0 +1,36 @@
+name: Environment_scope_variable
+
+on:
+  workflow_dispatch: 
+env: 
+  Company: OpenAI
+jobs:
+  Backend:
+    runs-on: ubuntu-latest
+    env:
+      Project: FlaskAPI
+    steps:
+      - name: step1
+        env:
+          VERSION: v1.0
+        run: | 
+          echo "Company:$Company"
+          echo "Project:$Project"
+          echo "Version:$VERSION"  
+
+
+  
+      - name: step2
+        run: |
+         echo "Company:$Company"
+         echo "Project:$Project"
+         echo "Version:$VERSION"
+  Frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Frontend-step
+        run: |
+         echo"Company:$Company"
+         echo "Project:$Project"
+         echo "Version:$VERSION"
+
