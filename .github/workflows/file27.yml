@@ -20,7 +20,7 @@ jobs:
          name: runner2
          run: |
           echo "${{ runner.os }}"
-          ehco "Hello from windows"
+          echo "Hello from windows"
           Get-ComputerInfo
 
 
