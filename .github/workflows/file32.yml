@@ -27,7 +27,7 @@ jobs:
           name: Flask_package
       - name: Verify_package
         run: |
-          cat dist/app.txt
+          cat app.txt
           ls -R
     
       
