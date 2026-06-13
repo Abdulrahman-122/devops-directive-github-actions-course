@@ -1,0 +1,35 @@
+name: Check_cache
+on:
+  workflow_dispatch: 
+jobs:
+  Create_cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check_cache
+        id: check-cache
+        uses: actions/cache@v4
+        with:
+          path: check-cache
+          key: cache-v2
+      - name: Generate_cache
+        if: steps.check-cache.outputs.cache-hit !='true'
+        run: |
+          echo "Oops cache miss!!!"
+          mkdir -p check-cache
+          echo "Welcome new cache" >>check-cache/output.txt
+          date >> check-cache/output.txt
+      - name: save-cache
+        if: steps.check-cache.outputs.cache-hit !='true'
+        uses: actions/cache@v4
+        with:
+          path: check-cache
+          key: cache-v2
+      - name: varify-cache
+        run: |
+          echo "Welcome from new cache"
+          echo "After doing that step you will notice the phase of creating new caches will be closed  "
+          cat check-cache/output.txt
+
+      
+
+          
