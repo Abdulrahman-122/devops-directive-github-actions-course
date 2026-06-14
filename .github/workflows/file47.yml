@@ -1,0 +1,13 @@
+name: Conditions_in_Actions
+on:
+  workflow_dispatch:
+jobs:
+  Test_conditions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+       number: [1,2,3]
+       letter: [a,b,c]
+    steps:
+    - if: ${{ (matrix.number== 2 && matrix.letter== 'c')}}
+      run: echo "This will pass trough that test just if 2c"
