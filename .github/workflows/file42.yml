@@ -1,0 +1,11 @@
+name: OIDC_Permission_Demo
+on:
+  workflow_dispatch:
+jobs:
+  test_token:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - run : | 
+          echo "OIDC enabled"
