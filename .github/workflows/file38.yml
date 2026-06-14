@@ -15,7 +15,4 @@ jobs:
       - name: Read_permission
         run: | 
           echo "Can read PRs"
-      - uses: actions/checkout@v4
-      - name: list the five uses Pull requests
-        run: gh pr list --limit 5
 
