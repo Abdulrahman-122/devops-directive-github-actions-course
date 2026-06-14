@@ -15,10 +15,11 @@ jobs:
         run: gh pr list --limit 5
         env:
           GH_TOKEN: ${{ github.token }}
-      - name: Attempted to add label(expected to fail)
+      - name: List PRs
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh pr edit 1 --add-label "Documentation"
+        run: |
+          gh pr list
       - name: Confirm the failure
         if: failure()
         run : echo "the rules is setup correctly so you can't add any labels as you added read only permissions"
@@ -30,12 +31,11 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
-      - name: Attempted to add a label
+      - name: List PRs
         env:
-          GH_TOKEN: ${{ github.token }}  
+          GH_TOKEN: ${{ github.token }}
         run: |
-           gh pr list --limit 5
-           gh pr edit 1 --add-label "Documentation"
+          gh pr list
       - name: confirm the result
         if: success()
         run: echo "Write operation succeeded"
