@@ -1,15 +1,9 @@
-name: Hello_world
-describtion: Greet_someone
+name: Show_system_info
+runs:
+  using: composite
+  steps:
+    - run: uname -a
+      shell: bash
+    - run: date
+      shell: bash
 
-inputs:
-  who_to_greet:
-    describtion: who_to_greet
-    required: true
-    defaults: "World"
-  runs:
-    using: composite
-    steps:
-      - run: echo " Hello $who_to_greet!!!"
-        shell: bash
-        env: 
-          Input_who_to_Greet: ${{inputs.who_to_greet}}
