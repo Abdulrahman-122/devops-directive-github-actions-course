@@ -1,0 +1,12 @@
+name: Node_with_CI
+on:
+  workflow_dispatch: 
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./06-authoring-actions/composite-action/node-ci
+        with:
+          node-Version: "20"
+          
