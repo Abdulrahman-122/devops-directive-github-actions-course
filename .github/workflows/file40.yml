@@ -1,0 +1,12 @@
+name: check_permission4
+on:
+  workflow_dispatch: 
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions: 
+      pull-requests: write
+    steps:
+      - run: echo "Write access granted"
+
+  
