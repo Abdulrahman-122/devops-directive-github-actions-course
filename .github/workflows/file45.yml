@@ -1,0 +1,14 @@
+name: Multi_matrix
+on:
+  workflow_dispatch:
+jobs:
+  Multi_matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        number: [1,2,3]
+        letter: [a,b,c]
+    steps:
+      - run: |
+          echo " number=${{ matrix.number }}"
+          echo "letter=${{ matrix.letter }}"
