@@ -1,0 +1,13 @@
+name: Check_permissions
+on:
+  workflow_dispatch:
+    
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Force_failure
+        run: exit 1
+      - name:  Will never run
+        run: echo "Hello after failure"
+        
