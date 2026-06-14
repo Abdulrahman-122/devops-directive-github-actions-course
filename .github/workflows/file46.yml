@@ -1,0 +1,18 @@
+name: Exclude_thing_from_matrix
+on:
+  workflow_dispatch:
+jobs:
+  Exclude_from_Matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        number: [1,2,3]
+        letter: [a,b,c]
+        exclude:
+         - number: 1
+           letter: c
+         - number: 2
+           letter: a
+
+    steps:
+      - run: echo "${{matrix.number}}${{matrix.letter}}"
