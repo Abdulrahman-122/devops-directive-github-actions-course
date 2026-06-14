@@ -1,0 +1,21 @@
+name: Read_only_test
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions: 
+      pull-requests: read
+    continue-on-error: true        #avoid failing the entire workflow while error happened
+
+    steps:
+      - name: show_token_exist
+        run: | 
+          echo "Token Available"
+      - name: Read_permission
+        run: | 
+          echo "Can read PRs"
+      - uses: actions/checkout@v4
+      - name: list the five uses Pull requests
+        run: gh pr list --limit 5
+
