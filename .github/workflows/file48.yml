@@ -9,8 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: sleep
+        timeout-minutes: 1
         run: |
          echo "Sleeping...."
          sleep 120
-         
+
    
