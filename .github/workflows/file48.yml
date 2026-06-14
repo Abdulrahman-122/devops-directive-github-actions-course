@@ -1,0 +1,16 @@
+name: check_concurrency
+on:
+  workflow_dispatch: 
+concurrency:
+    group: Production
+    cancel-in-progress: true
+jobs:
+  Test_concurrency:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sleep
+        run: |
+         echo "Sleeping...."
+         sleep 120
+         
+   
