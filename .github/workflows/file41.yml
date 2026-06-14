@@ -1,0 +1,43 @@
+name: understand_permissions
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  read-only-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: list the first 5 Pull requests
+        run: gh pr list --limit 5
+        env:
+          API_KEY: ${{ secrets.Api_key }}
+      - name: Attempted to add label(expected to fail)
+        env:
+          API_KEY: ${{secrets.Api_key}}
+        run: gh pr edit 1 --add-label "Documentation"
+      - name: Confirm the failure
+        if: failure()
+        run : echo "the rules is setup correctly so you can't add any labels as you added read only permissions"
+  Read_write_operation:
+    runs-on: ubuntu-latest
+
+    permissions: 
+      pull-requests: write
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attempted to add a label
+        env:
+          Api_key: ${{ secrets.Api_key }}
+        run: |
+           gh pr list --limit 5
+           gh pr edit 1 --add-label "Documentation"
+      - name: confirm the result
+        if: success()
+        run: echo "Write operation succeeded"
+
+
