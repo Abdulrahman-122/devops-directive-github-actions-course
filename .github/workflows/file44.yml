@@ -1,0 +1,15 @@
+name: matrix_basic
+on:
+  workflow_dispatch:
+    
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language:
+          - python
+          - Go
+          - JS
+    steps:
+      - run: echo "Language = ${{ matrix.language }}"
