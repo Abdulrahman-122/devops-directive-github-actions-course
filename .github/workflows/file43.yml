@@ -1,0 +1,16 @@
+name: Compare_Authentications
+on:
+  workflow_dispatch:
+jobs:
+  static_secrets:
+    runs-on: ubuntu-latest
+    env:
+      Api_key: ${{ secrets.Api_key }}
+    steps:
+      - run: echo "Using static keys"
+  OIDC: 
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - run: echo "Using OIDC authetications"
