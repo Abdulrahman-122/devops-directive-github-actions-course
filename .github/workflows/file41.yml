@@ -14,10 +14,10 @@ jobs:
       - name: list the first 5 Pull requests
         run: gh pr list --limit 5
         env:
-          API_KEY: ${{ secrets.Api_key }}
+          GH_TOKEN: ${{ github.token }}
       - name: Attempted to add label(expected to fail)
         env:
-          GH_TOKEN: ${{ vars.GH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: gh pr edit 1 --add-label "Documentation"
       - name: Confirm the failure
         if: failure()
@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Attempted to add a label
         env:
-          GH_TOKEN: ${{ vars.GH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}  
         run: |
            gh pr list --limit 5
            gh pr edit 1 --add-label "Documentation"
