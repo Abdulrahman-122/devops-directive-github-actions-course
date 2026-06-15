@@ -1,19 +1,28 @@
 name: Test_reusable_workflow
+
 on:
   workflow_dispatch:
+
 jobs:
   Test1:
-   name: invoke reusable workflow with Relative path
-   uses: ./.github/workflows/reusable3.yml
-   with:
-    foo: bar
-    environment: staging
-   secrets: inherit
+    name: invoke reusable workflow with Relative path
+
+    uses: ./.github/workflows/reusable3.yml
+
+    with:
+      foo: bar
+      environment: staging
+
+    secrets: inherit
+
   Test2:
-    name: invoke reusable workflow with repo+comit
-    uses: sidpalas/devops-directive-github-actions-course/.github/workflows/06-authoring-actions--02-reuseable-workflows-source.yaml@f2d2e4a0a9ee82ef859e0f83ebfb5236efce069f
+    name: invoke reusable workflow with repo + commit
+
+    uses: your-username/your-repo/.github/workflows/reusable3.yml@main
+
     with:
       foo: bar
       environment: production
+
     secrets:
-     API_KEY: ${{secrets.Api_secrets}}
+      Api_secrets: ${{ secrets.Api_secrets }}
