@@ -1,0 +1,13 @@
+name: Reusable_node_workflow
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+jobs:
+  node-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print_node_version
+        run: echo  "Requested Node Version:${{ inputs.node-version }}"

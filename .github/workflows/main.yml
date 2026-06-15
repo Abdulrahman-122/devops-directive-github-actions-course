@@ -1,0 +1,8 @@
+name: Test_reusable_workflow
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    uses: ./.github/workflows/reusable-node.yml
+    with:
+        node-version: "20"
