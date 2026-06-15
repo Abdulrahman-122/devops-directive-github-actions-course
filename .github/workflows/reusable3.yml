@@ -1,0 +1,26 @@
+name: Test_reusable_workflow
+on:
+  workflow_call:
+    inputs:
+     foo:
+      required: true
+      type: string
+     environment:
+      description: "Target Github environment (staging,production)"
+      required: true
+      type: string
+    secrets:
+      Api_secrets:
+        required: true
+jobs:
+  reusable_workflow:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: job in reusable workflow
+        env:
+          FOO: ${{ inputs.foo }}
+          API_KEY: ${{ secrets.Api_secrets}}
+        run: |
+          echo "Foo= $FOO"
+          echo "Secrets = $API_KEY"
