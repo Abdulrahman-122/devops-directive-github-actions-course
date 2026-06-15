@@ -1,0 +1,9 @@
+name: Show_system_info
+runs:
+  using: composite
+  steps:
+    - run: uname -a
+      shell: bash
+    - run: date
+      shell: bash
+

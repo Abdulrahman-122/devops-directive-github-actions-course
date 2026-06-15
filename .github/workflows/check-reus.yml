@@ -1,0 +1,9 @@
+name: check_reusable2
+on:
+  workflow_dispatch:
+
+jobs:
+  Test:
+    uses: ./.github/workflows/reusab2.yml
+    with:
+      Project_name: Frontend
